@@ -36,7 +36,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .route("/", get(index))
         .route("/hello-world", get(hello_world));
 
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:3333")
         .await
         .unwrap();
 
