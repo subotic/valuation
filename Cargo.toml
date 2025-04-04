@@ -1,0 +1,19 @@
+[package]
+name = "valuation"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+askama = "0.13.0"
+async-stream = "0.3.6"
+axum = "0.8.3"
+datastar = { git = "https://github.com/starfederation/datastar", tag = "v1.0.0-beta.11", features = ["axum"] }
+futures = "0.3.31"
+maud = "0.27.0"
+serde = { version = "1.0.219", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+tokio-stream = "0.1.17"
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+
+
