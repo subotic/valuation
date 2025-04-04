@@ -1,7 +1,7 @@
 use core::error::Error;
 use core::time::Duration;
 
-use askama::Template;
+
 use async_stream::stream;
 use axum::response::{Html, IntoResponse};
 use axum::routing::get;
@@ -11,10 +11,6 @@ use datastar::Sse;
 use serde::Deserialize;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
-
-#[derive(askama::Template)]
-#[template(path = "index.html")]
-struct IndexTemplate;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -43,8 +39,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 }
 
 async fn index() -> Html<String> {
-    let page = IndexTemplate {};
-    Html(page.render().unwrap())
+    Html(pages::index())
 }
 
 const MESSAGE: &str = "Hello, world!";

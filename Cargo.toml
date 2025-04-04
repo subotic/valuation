@@ -1,12 +1,20 @@
-[package]
-name = "valuation"
-version = "0.1.0"
+[workspace]
+members = [ "modules/pages","modules/server", "modules/types"]
+resolver = "2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace.package]
 edition = "2021"
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/dasch-swiss/dsp-meta"
+repository = "https://github.com/dasch-swiss/dsp-meta"
+documentation = "https://github.com/dasch-swiss/dsp-meta"
+readme = "README.md"
+description = "The DSP Metadata Command Line Tool providing transformation, validation and serving of research project's metadata."
+authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 
-[package.metadata.mdbook]
-src = "docs/src"
-
-[dependencies]
+[workspace.dependencies]
 askama = "0.13.0"
 async-stream = "0.3.6"
 axum = "0.8.3"
@@ -18,5 +26,3 @@ tokio = { version = "1", features = ["full"] }
 tokio-stream = "0.1.17"
 tracing = "0.1.41"
 tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
-
-

@@ -27,6 +27,10 @@ fix:
 build:
     cargo build --all-targets
 
+# Run server
+run:
+    cargo run --bin server --release
+
 # Run all tests
 test:
     cargo test --tests
