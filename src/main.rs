@@ -1,21 +1,16 @@
-
-use {
-    async_stream::stream,
-    axum::{
-        response::{Html, IntoResponse},
-        routing::get,
-        Router,
-    },
-    core::{error::Error, time::Duration},
-    datastar::{
-        prelude::{MergeFragments, ReadSignals},
-        Sse,
-    },
-    serde::Deserialize,
-    tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt},
-};
+use core::error::Error;
+use core::time::Duration;
 
 use askama::Template;
+use async_stream::stream;
+use axum::response::{Html, IntoResponse};
+use axum::routing::get;
+use axum::Router;
+use datastar::prelude::{MergeFragments, ReadSignals};
+use datastar::Sse;
+use serde::Deserialize;
+use tracing_subscriber::layer::SubscriberExt;
+use tracing_subscriber::util::SubscriberInitExt;
 
 #[derive(askama::Template)]
 #[template(path = "index.html")]
