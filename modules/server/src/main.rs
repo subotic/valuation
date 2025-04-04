@@ -1,9 +1,8 @@
 use core::error::Error;
 use core::time::Duration;
 
-
 use async_stream::stream;
-use axum::response::{Html, IntoResponse};
+use axum::response::{Html, IntoResponse, Response};
 use axum::routing::get;
 use axum::Router;
 use datastar::prelude::{MergeFragments, ReadSignals};
@@ -25,7 +24,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let app = Router::new()
         .route("/", get(index))
-        .route("/hello-world", get(hello_world));
+        .route("/hello-world", get(hello_world))
+        .route("/calculator", get(calculator_page))
+        .route("/calculator/styles.css", get(calculator_style_css));
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:3333")
         .await
@@ -56,4 +57,16 @@ async fn hello_world(ReadSignals(signals): ReadSignals<Signals>) -> impl IntoRes
             tokio::time::sleep(Duration::from_millis(signals.delay)).await;
         }
     })
+}
+
+async fn calculator_page() -> Html<String> {
+    Html(pages::calculator::index())
+}
+
+async fn calculator_style_css() -> Response {
+    (
+        [("Content-Type", "text/css")],
+        pages::calculator::style(), // this is the &'static str from the other crate
+    )
+        .into_response()
 }

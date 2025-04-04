@@ -1,3 +1,5 @@
+pub mod calculator;
+
 use askama::Template;
 
 #[derive(askama::Template)]
