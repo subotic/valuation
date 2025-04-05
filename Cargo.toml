@@ -1,5 +1,5 @@
 [workspace]
-members = [ "modules/pages","modules/server", "modules/types"]
+members = ["modules/documents","modules/server", "modules/types"]
 resolver = "2"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -15,7 +15,7 @@ description = "The DSP Metadata Command Line Tool providing transformation, vali
 authors = ["DaSCH - Swiss National Data and Service Center for the Humanities"]
 
 [workspace.dependencies]
-askama = "0.13.0"
+askama = { version = "0.13.0", features = ["full"] }
 async-stream = "0.3.6"
 axum = "0.8.3"
 datastar = { git = "https://github.com/starfederation/datastar", tag = "v1.0.0-beta.11", features = ["axum"] }

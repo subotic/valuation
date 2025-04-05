@@ -1,9 +1,7 @@
-pub mod calculator;
-
 use askama::Template;
 
 #[derive(askama::Template)]
-#[template(path = "index.html")]
+#[template(path = "home/index.html")]
 struct IndexTemplate;
 
 pub fn index() -> String {
